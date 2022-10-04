@@ -87,24 +87,151 @@ namespace Lecture7
         {
             Console.WriteLine("Enter your array of character");
             string a = Console.ReadLine();
-            //char[] sort = new char[a.Length];
+            string sort=null;
+            string max=null;
+            var replace="";
             for(int i=0;i<a.Length;i++)
             {
-                for (int j = 0; j < a.Length-1; j++)
+                for (int j = i; j < a.Length-1; j++)
                 {
-                    if (Convert.ToInt32(a[j])< Convert.ToInt32(a[j+1]))
+                    if (Convert.ToInt32(a[j]) < Convert.ToInt32(a[j + 1]))
                     {
-                        
+                        max = a[j + 1].ToString();
                     }
                 }
+                sort = sort + max;
             }
+            Console.WriteLine("Array sorted : "+replace);
+        }
+
+        static void Q4()
+        {
+            string s1= "kkkktttrrrrrrrrrr";
+            string s2 = "p555ppp7www";
+
+            Console.WriteLine(s1 + "\nCompressed forma: " + Count(s1));
+            Console.WriteLine(s2 + "\nCompressed forma: " + Count(s2));
+        }
+        static string Count(string s)
+        {
+            string repetition = null;
+            int nb = 1;
+            for (int i = 0; i < s.Length-1 ; i++)
+            {
+                if(s[i]==s[i+1])
+                {
+                    nb = nb + 1;
+                }
+                else
+                {
+                    repetition = repetition + s[i] + nb.ToString();
+                    nb = 1;
+                }
+            }
+            repetition = repetition + s[s.Length-1] + nb.ToString();
+            return repetition;
+        }
+        static void Q5()
+        {
+            int nb = 0;
+            for(int i=0;i<1000;i++)
+            {
+                if(Three_Digit(i)==true)
+                {
+                    nb++;
+                    Console.WriteLine("Armstrong number " + nb + " : " + i);
+                }
+            }
+        }
+
+        static bool Three_Digit(int nb)
+        {
+            bool answer = false;
+            int quotient = nb;
+            int calcul = 0;
+            int p = 2;
+            while(quotient>0)
+            {
+                int remainder = (int)(quotient % Math.Pow(10, p));
+                quotient = (int)(quotient / Math.Pow(10, p));
+                calcul = calcul + (int)Math.Pow(quotient, 3);
+                //Console.WriteLine(remainder + " " + quotient + " " + calcul);
+                quotient = remainder;
+                p--;
+            }
+            if(nb==calcul)
+            {
+                answer = true;
+            }
+            return answer;
+        }
+
+        static void Q6()
+        {
+            int[] a = { 5, 7, 5, 2, 2, 4, 5 };
+            int nb = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                for (int j = 0; j < a.Length; j++)
+                {
+                    if (a[i] == a[j])
+                    {
+                        nb++;
+                    }
+                }
+                Console.WriteLine(a[i] + " is " + nb + " times ");
+
+                nb = 0;
+            }
+
+        }
+        
+        static void Q7()
+        {
+            Console.WriteLine("Enter a number : ");
+            int nb = Convert.ToInt32(Console.ReadLine());
+            int factorial = 1;
+            for(int i=0; i<nb;i++)
+            {
+                factorial = factorial * (i+1);
+            }
+            Console.WriteLine(nb + "!=" + factorial);
+        }
+        static void Q8()
+        {
+            string phrase = "My name is Margaux !";
+            char space = ' ';
+            int nb = 0;
+            for (int i = 0; i < phrase.Length; i++)
+            {
+                if (phrase[i] == space)
+                {
+                    nb++;
+                }
+            }
+            Console.WriteLine(phrase);
+            Console.WriteLine("Number of white spaces : " + nb);
+
+        }
+        static void Q9()
+        {
+            //Person p1 = new Person();
+            Person p2 = new Person();
+            p2.name = "Marie";
+
         }
         static void Main(string[] args)
         {
             //Q1();
             //Q2();
             //Q3_a();
-            Q3();
+            //Q3();//A finir
+            //Q4();
+            //Q5();
+            Q6();//A finir
+            //Q7();
+            //Q8();
+            //Q9();//approximatif
             Console.ReadKey();
         }
     }
