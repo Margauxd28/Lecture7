@@ -253,10 +253,16 @@ namespace Lecture7
         }
         static void Q9()
         {
-            //Person p1 = new Person();
-            Person p2 = new Person();
-            p2.name = "Marie";
-
+            Console.WriteLine("Enter three names :");
+            Person p1 = new Person(Console.ReadLine());
+            Person p2 = new Person(Console.ReadLine());
+            Person p3 = new Person(Console.ReadLine());
+            Person[] persons = { p1, p2, p3 };
+            Console.WriteLine("Your array of Person is : ");
+            for(int i=0;i<persons.Length;i++)
+            {
+                Console.Write(persons[i].ToString()+ "\t");
+            }
         }
         static void Main(string[] args)
         {
@@ -270,7 +276,7 @@ namespace Lecture7
             //Q6_Bis();
             //Q7();
             //Q8();
-            //Q9();
+            Q9();
             Console.ReadKey();
         }
     }

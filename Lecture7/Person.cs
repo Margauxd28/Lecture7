@@ -26,6 +26,11 @@ namespace Lecture7
             get => name;
             //set => name = (!string.IsNullOrEmpty(value)) ? value : throw new ArgumentException("Name must not be empty");
         }
-        
+        //Method
+        public override string ToString()
+        {
+            return name;
+        }
+
     }
 }
