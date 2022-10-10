@@ -87,21 +87,29 @@ namespace Lecture7
         {
             Console.WriteLine("Enter your array of character");
             string a = Console.ReadLine();
-            string sort=null;
-            string max=null;
-            var replace="";
-            for(int i=0;i<a.Length;i++)
+            int [] nb=new int [a.Length];
+            for(int i=0;i< a.Length; i++)
             {
-                for (int j = i; j < a.Length-1; j++)
+                nb[i] = Convert.ToInt32(a[i]);
+            }
+            for(int i=0;i<nb.Length;i++)
+            {
+                for (int j = 0; j < nb.Length-1; j++)
                 {
-                    if (Convert.ToInt32(a[j]) < Convert.ToInt32(a[j + 1]))
+                    if (Convert.ToInt32(nb[j]) < Convert.ToInt32(nb[j + 1]))
                     {
-                        max = a[j + 1].ToString();
+                        int temp = nb[j];
+                        nb[j] = nb[j + 1];
+                        nb[j + 1] = temp;
                     }
                 }
-                sort = sort + max;
+                
             }
-            Console.WriteLine("Array sorted : "+replace);
+            Console.WriteLine("Array sorted : \n");
+            for (int i = 0; i < nb.Length; i++)
+            {
+                Console.Write(Convert.ToChar(nb[i]));
+            }
         }
 
         static void Q4()
@@ -168,6 +176,36 @@ namespace Lecture7
 
         static void Q6()
         {
+            int [] a = { 5, 7, 5, 2, 2, 4, 5 };
+            int nb = 0;
+            int max=a[0];
+            for (int i = 1; i < a.Length; i++)
+            {
+                if (max < a[i])
+                {
+                    max = a[i];
+                }
+            }
+            for (int i = 0; i <= max; i++)
+            {
+                for (int j = 0; j < a.Length; j++)
+                {
+                    if (a[j] == i)
+                    {
+                        nb++;
+                    }
+                }
+                if(nb!=0)
+                {
+                    Console.WriteLine(i + " is " + nb + " times ");
+                }
+
+                nb = 0;
+            }
+
+        }
+        static void Q6_Bis()
+        {
             int[] a = { 5, 7, 5, 2, 2, 4, 5 };
             int nb = 0;
             for (int i = 0; i < a.Length; i++)
@@ -178,6 +216,7 @@ namespace Lecture7
                     {
                         nb++;
                     }
+                    
                 }
                 Console.WriteLine(a[i] + " is " + nb + " times ");
 
@@ -185,7 +224,6 @@ namespace Lecture7
             }
 
         }
-        
         static void Q7()
         {
             Console.WriteLine("Enter a number : ");
@@ -225,13 +263,14 @@ namespace Lecture7
             //Q1();
             //Q2();
             //Q3_a();
-            //Q3();//A finir
+            //Q3();
             //Q4();
             //Q5();
-            Q6();//A finir
+            //Q6();
+            //Q6_Bis();
             //Q7();
             //Q8();
-            //Q9();//approximatif
+            //Q9();
             Console.ReadKey();
         }
     }
